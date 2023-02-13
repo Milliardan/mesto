@@ -1,0 +1,17 @@
+.profile__wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: 18px;
+}
+
+@media screen and (max-width: 785px) {
+  .profile__wrap {
+    column-gap: 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile__wrap {
+    margin-left: 27px;
+  }
+}

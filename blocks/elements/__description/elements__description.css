@@ -1,0 +1,10 @@
+.elements__description {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 79px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 21px 0 20px;
+}
