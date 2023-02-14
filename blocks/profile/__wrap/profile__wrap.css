@@ -1,10 +1,11 @@
 .profile__wrap {
   display: flex;
   flex-wrap: nowrap;
-  column-gap: 18px;
+  column-gap: 19px;
+  align-items: baseline;
 }
 
-@media screen and (max-width: 785px) {
+@media screen and (max-width: 990px) {
   .profile__wrap {
     column-gap: 10px;
   }
@@ -12,6 +13,6 @@
 
 @media screen and (max-width: 320px) {
   .profile__wrap {
-    margin-left: 27px;
+    max-width: 282px;
   }
 }

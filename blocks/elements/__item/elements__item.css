@@ -1,8 +1,12 @@
 .elements__item {
   background-color: #FFFFFF;
+  background-size: contain;
   border-radius: 10px;
   max-width: 282px;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   column-gap: 17px;
+  justify-content: space-between;
 }

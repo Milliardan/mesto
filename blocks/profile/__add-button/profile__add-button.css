@@ -16,11 +16,11 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 785px) {
+@media screen and (max-width: 990px) {
   .profile__add-button {
     background-image: url(../../../images/add-button-big.svg);
     min-width: 282px;
-    margin-top: 32px;
+    margin-top: 33px;
     margin-left: 0;
   }
 }

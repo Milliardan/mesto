@@ -11,7 +11,6 @@
 
     <header class="header">
       <img class="header__logo" src="images/logo.svg" alt="Логотип проекта Mesto">
-      <hr class="header__line">
     </header>
 
     <main class="content">
@@ -32,43 +31,43 @@
           <li class="elements__item">
             <img class="elements__pic" src="images/karachaevsk.jpg" alt="Карачаевск">
             <div class="elements__description">
-              <p class="elements__title">Карачаевск</p>
-              <button class="elements__like"></button>
+              <h2 class="elements__title">Карачаевск</h2>
+              <button class="elements__like" type="button"></button>
             </div>
           </li>
           <li class="elements__item">
             <img class="elements__pic" src="images/gora-elbrus.jpg" alt="Эльбрус">
             <div class="elements__description">
-              <p class="elements__title">Гора Эльбрус</p>
-              <button class="elements__like"></button>
+              <h2 class="elements__title">Гора Эльбрус</h2>
+              <button class="elements__like" type="button"></button>
             </div>
           </li>
           <li class="elements__item">
             <img class="elements__pic" src="images/Dombai.jpg" alt="Домбай">
             <div class="elements__description">
-              <p class="elements__title">Домбай</p>
-              <button class="elements__like"></button>
+              <h2 class="elements__title">Домбай</h2>
+              <button class="elements__like" type="button"></button>
             </div>
           </li>
           <li class="elements__item">
             <img class="elements__pic" src="images/elbrus.jpg" alt="Гора Эльбрус">
             <div class="elements__description">
-              <p class="elements__title">Гора Эльбрус</p>
-              <button class="elements__like"></button>
+              <h2 class="elements__title">Гора Эльбрус</h2>
+              <button class="elements__like" type="button"></button>
             </div>
           </li>
           <li class="elements__item">
             <img class="elements__pic" src="images/gora-dombai.jpg" alt="Гора Домбай">
             <div class="elements__description">
-              <p class="elements__title">Домбай</p>
-              <button class="elements__like"></button>
+              <h2 class="elements__title">Домбай</h2>
+              <button class="elements__like" type="button"></button>
             </div>
           </li>
           <li class="elements__item">
             <img class="elements__pic" src="images/karachaevo.jpg" alt="Карачаево">
             <div class="elements__description">
-              <p class="elements__title">Карачаево-Черкесия</p>
-              <button class="elements__like"></button>
+              <h2 class="elements__title">Карачаево-Черкесия</h2>
+              <button class="elements__like" type="button"></button>
             </div>
           </li>
         </ul>
@@ -83,8 +82,8 @@
 
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-        <div class="popup__close"><img class="popup__close-icon" src="images/close-icon.svg" alt="Кнопка закрытия всплывающего окна"></div>
-        <form class="popup__form">
+        <button class="popup__close" type="button"><img class="popup__close-icon" src="images/close-icon.svg" alt="Кнопка закрытия всплывающего окна"></button>
+        <form class="popup__form" name="popupForm">
           <input type="text" name="name" class="popup__input popup__input_field_name" placeholder="Имя" value="">
           <input type="text" name="caption" class="popup__input popup__input_field_caption" placeholder="О себе" value="">
 
