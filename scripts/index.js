@@ -1,31 +1,43 @@
 let profileEditButton = document.querySelector('.profile__edit-button');
-let popupOpened = document.querySelector('.popup_opened');
+let popupOpened = document.querySelector('.popup');
 let popupClosed = document.querySelector('.popup__close');
-
-
-  profileEditButton.addEventListener ('click', function (openFunc) {
-    popupOpened.classList.remove('popup_opened');
-  });
-
-  popupClosed.addEventListener ('click', function (closeFunc) {
-    popupOpened.classList.add('popup_opened');
-  });
 
 let formElement = document.querySelector('.popup__form');
 
 let nameInput = document.querySelector('.popup__input_field_name');
 let jobInput = document.querySelector('.popup__input_field_caption');
 
-function handleFormSubmit (evt) {
-    evt.preventDefault();
-
-nameInput.getAttribute('value');
-jobInput.getAttribute('value');
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
 
-profileTitle.textContent = nameInput.value;
-profileSubtitle.textContent = jobInput.value;
+let popupSubmit = document.querySelector('.popup__submit');
+
+// Функция добавления класса и данных из профиля.
+function openFunc() {
+  popupOpened.classList.add('popup_opened');
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
+}
+// Функция удаления класса.
+function closeFunc() {
+  popupOpened.classList.remove('popup_opened');
+}
+
+// Открываем и закрываем попап. Использую объявленную функцию.
+
+profileEditButton.addEventListener('click', openFunc);
+
+popupClosed.addEventListener('click', closeFunc);
+
+// Обработчик «отправки» формы.
+
+function handleFormSubmit(evt) {
+  evt.preventDefault();
+
+  profileTitle.textContent = nameInput.value;
+  profileSubtitle.textContent = jobInput.value;
+
+  popupSubmit.addEventListener('click', closeFunc);
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
