@@ -19,11 +19,11 @@
         <div class="profile__info">
           <div class="profile__wrap">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button"></button>
+            <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button class="profile__add-button" type="button"></button>
+        <button class="profile__add-button" type="button" aria-label="Добавить изображения"></button>
       </section>
 
       <section class="elements">
@@ -32,42 +32,42 @@
             <img class="elements__pic" src="images/karachaevsk.jpg" alt="Карачаевск">
             <div class="elements__description">
               <h2 class="elements__title">Карачаевск</h2>
-              <button class="elements__like" type="button"></button>
+              <button class="elements__like" type="button" aria-label="Нравится"></button>
             </div>
           </li>
           <li class="elements__item">
             <img class="elements__pic" src="images/gora-elbrus.jpg" alt="Эльбрус">
             <div class="elements__description">
               <h2 class="elements__title">Гора Эльбрус</h2>
-              <button class="elements__like" type="button"></button>
+              <button class="elements__like" type="button" aria-label="Нравится"></button>
             </div>
           </li>
           <li class="elements__item">
             <img class="elements__pic" src="images/dombai.jpg" alt="Домбай">
             <div class="elements__description">
               <h2 class="elements__title">Домбай</h2>
-              <button class="elements__like" type="button"></button>
+              <button class="elements__like" type="button" aria-label="Нравится"></button>
             </div>
           </li>
           <li class="elements__item">
             <img class="elements__pic" src="images/elbrus.jpg" alt="Гора Эльбрус">
             <div class="elements__description">
               <h2 class="elements__title">Гора Эльбрус</h2>
-              <button class="elements__like" type="button"></button>
+              <button class="elements__like" type="button" aria-label="Нравится"></button>
             </div>
           </li>
           <li class="elements__item">
             <img class="elements__pic" src="images/gora-dombai.jpg" alt="Гора Домбай">
             <div class="elements__description">
               <h2 class="elements__title">Домбай</h2>
-              <button class="elements__like" type="button"></button>
+              <button class="elements__like" type="button" aria-label="Нравится"></button>
             </div>
           </li>
           <li class="elements__item">
             <img class="elements__pic" src="images/karachaevo.jpg" alt="Карачаево">
             <div class="elements__description">
               <h2 class="elements__title">Карачаево-Черкесия</h2>
-              <button class="elements__like" type="button"></button>
+              <button class="elements__like" type="button" aria-label="Нравится"></button>
             </div>
           </li>
         </ul>
@@ -82,12 +82,12 @@
 
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-        <button class="popup__close" type="button"><img class="popup__close-icon" src="images/close-icon.svg" alt="Кнопка закрытия всплывающего окна"></button>
-        <form class="popup__form" name="popupForm">
+        <button class="popup__close" type="button" aria-label="Закрыть"><img class="popup__close-icon" src="images/close-icon.svg" alt="Кнопка закрытия всплывающего окна"></button>
+        <form class="popup__form" name="editPopupForm">
           <input type="text" name="name" class="popup__input popup__input_field_name" placeholder="Имя" value="">
           <input type="text" name="caption" class="popup__input popup__input_field_caption" placeholder="О себе" value="">
 
-        <button type="submit" class="popup__submit">Сохранить</button>
+        <button type="submit" class="popup__submit" aria-label="Сохранить">Сохранить</button>
       </form>
     </div>
 
