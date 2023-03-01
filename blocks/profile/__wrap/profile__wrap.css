@@ -5,7 +5,7 @@
   align-items: baseline;
 }
 
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 767px) {
   .profile__wrap {
     column-gap: 10px;
   }

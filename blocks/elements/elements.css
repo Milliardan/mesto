@@ -1,11 +1,25 @@
 .elements {
   margin-top: 51px;
-  max-width: 880px;
+  max-width: 282px;
   margin: 51px auto 0 auto;
 }
 
 @media screen and (max-width: 320px) {
   .elements {
     margin-top: 36px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .elements {
+    margin-top: 50px;
+    max-width: 581px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .elements {
+    max-width: 880px;
+    width: 100%;
   }
 }

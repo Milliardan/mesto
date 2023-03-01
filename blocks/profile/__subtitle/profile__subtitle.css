@@ -12,11 +12,16 @@
   line-height: 22px;
 }
 
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 1024px) {
   .profile__subtitle {
     max-width: 282px;
     font-size: 16px;
     line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .profile__subtitle {
     text-align: center;
   }
 }
