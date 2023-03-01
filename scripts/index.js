@@ -26,7 +26,7 @@ const popupClosedImage = popupImage.querySelector('.popup__close');
 const popupBigImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__image-caption');
 
-// Функция добавления класса для открытия попапа.
+// Функция добавления класса для открытия попапа
 function openPopup(open) {
   open.classList.add('popup_opened');
 }
