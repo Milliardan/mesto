@@ -18,8 +18,8 @@ const jobInput = document.querySelector('.popup__input_field_caption');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
-const elementsTitleValue = document.querySelector('.popup__input_field_heading').value;
-const elementsLinkValue = document.querySelector('.popup__input_field_link').value;
+const elementsTitleValue = document.querySelector('.popup__input_field_heading');
+const elementsLinkValue = document.querySelector('.popup__input_field_link');
 
 const popupClosedImage = popupImage.querySelector('.popup__close');
 
@@ -136,8 +136,8 @@ function handleFormSubmitAdd(event) {
   event.preventDefault();
 
   const cards = {
-    name: elementsTitleValue,
-    link: elementsLinkValue
+    name: elementsTitleValue.value,
+    link: elementsLinkValue.value
   };
   renderCard(cards, elementsList);
   closePopup(popupAddCard);

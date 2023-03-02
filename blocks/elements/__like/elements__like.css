@@ -3,8 +3,10 @@
   background: url(../../../images/like-disabled.svg) center no-repeat;
   background-size: 100%;
   cursor: pointer;
-  width: 22px;
-  height: 19px;
+  max-width: 22px;
+  max-height: 19px;
+  width: 100%;
+  height: 100%;
   transition: 0.3s;
 }
 
