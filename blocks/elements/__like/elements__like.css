@@ -1,12 +1,10 @@
 .elements__like {
   border: none;
   background: url(../../../images/like-disabled.svg) center no-repeat;
-  background-size: 100%;
+  background-size: contain;
   cursor: pointer;
-  max-width: 22px;
-  max-height: 19px;
-  width: 100%;
-  height: 100%;
+  width: 22px;
+  height: 19px;
   transition: 0.3s;
 }
 
