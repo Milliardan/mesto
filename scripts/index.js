@@ -26,19 +26,11 @@ const popupClosedImage = popupImage.querySelector('.popup__close');
 const popupBigImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__image-caption');
 
-
-// Обработчик закрытия попапа на ESC
-function handleEsc(evt) {
-  const popupOpened = document.querySelector('.popup_opened');
-  if (evt.key === 'Escape') {
-    closePopup(popupOpened);
-  };
-}
-
 // Функция добавления класса для открытия попапа
 function openPopup(open) {
   open.classList.add('popup_opened');
   document.addEventListener('keydown', handleEsc);
+  open.addEventListener('click', handleMouseClickBackground);
 }
 
 // Функция добавления информации.
@@ -51,6 +43,23 @@ function addProfileInfo() {
 function closePopup(close) {
   close.classList.remove('popup_opened');
   document.removeEventListener('keydown', handleEsc);
+  document.removeEventListener('click', handleMouseClickBackground);
+}
+
+// Обработчик закрытия попапа на ESC
+function handleEsc(evt) {
+  const popupOpened = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+    closePopup(popupOpened);
+  };
+}
+
+// Функция закрытия попапа кликом на темный фон
+function handleMouseClickBackground(evt) {
+  const popupOpenedClick = document.querySelector('.popup_opened');
+  if (evt.currentTarget === evt.target) {
+    closePopup(popupOpenedClick);
+  }
 }
 
 // Открываем и закрываем попап редактирования. Использую объявленные функции.
@@ -94,12 +103,6 @@ const elementsList = document.querySelector('.elements__list');
 popupClosedImage.addEventListener('click', function () {
   closePopup(popupImage);
 });
-
-
-
-// Функция закрытия попапа кликом на темный фон
-
-
 
 function createCard(data) {
   // Клонируем шаблон, наполняем его информацией из объекта data
@@ -161,9 +164,3 @@ function handleFormSubmitAdd(event) {
 };
 
 formAdd.addEventListener('submit', handleFormSubmitAdd);
-
-//document.addEventListener('keydown', handleEsc)function(evt) {
-  //if (evt.key === 'Escape') {
-    //closePopup(popupOpened);
-  //};
-//});
