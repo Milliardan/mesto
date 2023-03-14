@@ -1,7 +1,7 @@
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileAddButton = document.querySelector('.profile__add-button');
 
-const popupOpened = document.querySelector('.popup');
+const popup = document.querySelector('.popup');
 const popupClosedEditForm = document.querySelector('.popup__close');
 
 const popupEdit = document.querySelector('.popup_type_edit-profile');
@@ -26,9 +26,19 @@ const popupClosedImage = popupImage.querySelector('.popup__close');
 const popupBigImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__image-caption');
 
+
+// Обработчик закрытия попапа на ESC
+function handleEsc(evt) {
+  const popupOpened = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+    closePopup(popupOpened);
+  };
+}
+
 // Функция добавления класса для открытия попапа
 function openPopup(open) {
   open.classList.add('popup_opened');
+  document.addEventListener('keydown', handleEsc);
 }
 
 // Функция добавления информации.
@@ -40,6 +50,7 @@ function addProfileInfo() {
 // Функция удаления класса для закрытия попапа.
 function closePopup(close) {
   close.classList.remove('popup_opened');
+  document.removeEventListener('keydown', handleEsc);
 }
 
 // Открываем и закрываем попап редактирования. Использую объявленные функции.
@@ -72,7 +83,7 @@ function handleFormSubmitEdit(evt) {
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
 
-  closePopup(popupOpened);
+  closePopup(popup);
 }
 
 formEdit.addEventListener('submit', handleFormSubmitEdit);
@@ -83,6 +94,12 @@ const elementsList = document.querySelector('.elements__list');
 popupClosedImage.addEventListener('click', function () {
   closePopup(popupImage);
 });
+
+
+
+// Функция закрытия попапа кликом на темный фон
+
+
 
 function createCard(data) {
   // Клонируем шаблон, наполняем его информацией из объекта data
@@ -144,3 +161,9 @@ function handleFormSubmitAdd(event) {
 };
 
 formAdd.addEventListener('submit', handleFormSubmitAdd);
+
+//document.addEventListener('keydown', handleEsc)function(evt) {
+  //if (evt.key === 'Escape') {
+    //closePopup(popupOpened);
+  //};
+//});
