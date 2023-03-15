@@ -41,10 +41,15 @@
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
         <button class="popup__close" type="button" aria-label="Закрыть"><img class="popup__close-icon" src="images/close-icon.svg" alt="Кнопка закрытия всплывающего окна"></button>
-        <form class="popup__form popup__form_action_edit" name="editPopupForm">
-          <input type="text" name="name" class="popup__input popup__input_field_name" placeholder="Имя" value="">
-          <input type="text" name="caption" class="popup__input popup__input_field_caption" placeholder="О себе" value="">
-
+        <form class="popup__form popup__form_action_edit" name="editPopupForm" novalidate>
+          <label class="popup__field">
+            <input type="text" name="name" class="popup__input popup__input_field_name" placeholder="Имя" value="" minlength="2" maxlength="40" required>
+            <span class="popup__error" id="name-error"></span>
+          </label>
+          <label class="popup__field">
+            <input type="text" name="caption" class="popup__input popup__input_field_caption" placeholder="О себе" value="" minlength="2" maxlength="200" required>
+            <span class="popup__error" id="caption-error"></span>
+          </label>
         <button type="submit" class="popup__submit popup__submit_action_edit" aria-label="Сохранить">Сохранить</button>
       </form>
     </div>
@@ -56,11 +61,16 @@
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
         <button class="popup__close" type="button" aria-label="Закрыть"><img class="popup__close-icon" src="images/close-icon.svg" alt="Кнопка закрытия всплывающего окна добавления карточки"></button>
-        <form class="popup__form popup__form_action_add" name="addPopupForm">
-          <input type="text" name="nameCard" class="popup__input popup__input_field_heading" placeholder="Название" value="">
-          <input type="text" name="urlCard" class="popup__input popup__input_field_link" placeholder="Ссылка на картинку" value="">
-
-        <button type="submit" class="popup__submit popup__submit_action_add" aria-label="Сохранить">Создать</button>
+        <form class="popup__form popup__form_action_add" name="addPopupForm" novalidate>
+          <label class="popup__field">
+            <input type="text" name="nameCard" class="popup__input popup__input_field_heading" placeholder="Название" value="" minlength="2" maxlength="30" required>
+            <span class="popup__error" id="nameCard-error"></span>
+          </label>
+          <label class="popup__field">
+            <input type="url" name="urlCard" class="popup__input popup__input_field_link" placeholder="Ссылка на картинку" value="" required>
+            <span class="popup__error" id="urlCard-error"></span>
+          </label>
+        <button type="submit" class="popup__submit popup__submit_action_add popup__submit_disabled" aria-label="Создать">Создать</button>
       </form>
     </div>
   </div>
@@ -85,6 +95,7 @@
     </li>
   </template>
 
+  <script src="scripts/validate.js"></script>
   <script src="scripts/cards.js"></script>
   <script src="scripts/index.js"></script>
 </body>
