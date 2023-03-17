@@ -12,10 +12,12 @@ const hideInputError = (errorElement, errorClass, input, inputErrorClass) => {
 
 const enableButton = (buttonElement, inactiveButton) => {
   buttonElement.classList.remove(inactiveButton);
+  buttonElement.disabled = false;
 }
 
 const disableButton = (buttonElement, inactiveButton) => {
   buttonElement.classList.add(inactiveButton);
+  buttonElement.disabled = true;
 }
 
 const hasInvalidInput = (inputList) => {
@@ -75,11 +77,13 @@ const enableValidation = (config) => {
   });
 }
 
-enableValidation({
+const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
   inactiveButtonClass: 'popup__submit_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
-});
+};
+
+enableValidation(validationConfig);

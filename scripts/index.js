@@ -26,6 +26,9 @@ const popupClosedImage = popupImage.querySelector('.popup__close');
 const popupBigImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__image-caption');
 
+const popupSubmitDisabled = validationConfig.inactiveButtonClass;
+const submitButtonAddCard = document.querySelector('.popup__submit_action_add');
+
 // Функция добавления класса для открытия попапа
 function openPopup(open) {
   open.classList.add('popup_opened');
@@ -43,22 +46,21 @@ function addProfileInfo() {
 function closePopup(close) {
   close.classList.remove('popup_opened');
   document.removeEventListener('keydown', handleEsc);
-  document.removeEventListener('click', handleMouseClickBackground);
+  close.removeEventListener('click', handleMouseClickBackground);
 }
 
 // Обработчик закрытия попапа на ESC
 function handleEsc(evt) {
-  const popupOpened = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
   };
 }
 
 // Функция закрытия попапа кликом на темный фон
 function handleMouseClickBackground(evt) {
-  const popupOpenedClick = document.querySelector('.popup_opened');
   if (evt.currentTarget === evt.target) {
-    closePopup(popupOpenedClick);
+    closePopup(evt.currentTarget);
   }
 }
 
@@ -154,13 +156,15 @@ initialCards.forEach(card => { renderCard(card, elementsList); });
 
 function handleFormSubmitAdd(event) {
   event.preventDefault();
-
   const cards = {
     name: elementsTitleValue.value,
     link: elementsLinkValue.value
   };
   renderCard(cards, elementsList);
   closePopup(popupAddCard);
+  formAdd.reset();
+
+  disableButton(submitButtonAddCard, popupSubmitDisabled);
 };
 
 formAdd.addEventListener('submit', handleFormSubmitAdd);
