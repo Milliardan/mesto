@@ -2,6 +2,8 @@ class FormValidator {
   constructor(config, formName) {
       this._config = config;
       this._formName = formName;
+      this._inputList = Array.from(this._formName.querySelectorAll(this._config.inputSelector));
+      this._buttonElement = this._formName.querySelector(this._config.submitButtonSelector);
   }
 
   _hideErrorMessage(inputElement, config) {
@@ -65,35 +67,29 @@ class FormValidator {
           evt.preventDefault;
       })
 
-      const inputList = Array.from(this._formName.querySelectorAll(inputSelector));
-      const buttonElement = this._formName.querySelector(submitButtonSelector);
-      this._toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+      this._toggleButtonState(this._inputList, this._buttonElement, inactiveButtonClass);
 
-      inputList.forEach((inputElement) => {
+      this._inputList.forEach((inputElement) => {
           this._checkInputValidity(inputElement, rest);
           inputElement.addEventListener('input', () => {
               this._checkInputValidity(inputElement, rest);
-              this._toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+              this._toggleButtonState(this._inputList, this._buttonElement, inactiveButtonClass);
           })
       })
   }
 
   resetForm() {
       const { inputSelector, submitButtonSelector, inactiveButtonClass, ...rest } = this._config;
-      this._formName.reset();
-      const inputList = Array.from(this._formName.querySelectorAll(inputSelector));
-      inputList.forEach((input) => {
+      this._inputList.forEach((input) => {
           this._hideErrorMessage(input, rest);
-          const inputList = Array.from(this._formName.querySelectorAll(inputSelector));
-          const buttonElement = this._formName.querySelector(submitButtonSelector);
-          this._toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+          this._toggleButtonState(this._inputList, this._buttonElement, inactiveButtonClass);
       })
-  }
-  
+    }
+
 // Валидация формы
   enableValidation = (config) => {
       const { formSelector, ...rest} = this._config;
-      const formList = Array.from(document.querySelectorAll(formSelector));
+      const formList = Array.from(document.querySelector(formSelector));
 
       formList.forEach((formElement) => {
           this._setEventListeners(formElement, rest);

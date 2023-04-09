@@ -1,6 +1,15 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}
+
 const esc = 'Escape';
 const openPopupButton = document.querySelector('.profile__edit-button');
 
@@ -16,17 +25,17 @@ const openAddCardButton = document.querySelector('.profile__add-button');
 const inputAddCardName = document.querySelector('.popup__input_field_heading');
 const inputAddCardLink = document.querySelector('.popup__input_field_link');
 
-
 const cardsContainer = document.querySelector('.elements__list');
 const popupFormCard = document.querySelector('.popup__form_action_add');
-
+const popupImage = document.querySelector('.popup_type_image');
+const popupClosedImage = popupImage.querySelector('.popup__close');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
+const formEditProfile = popupEditProfile.querySelector('.popup__form');
 const popupClosedEditForm = popupEditProfile.querySelector('.popup__close');
 const popupAddCard = document.querySelector('.popup_type_add-card');
 const closePopupAddButton = popupAddCard.querySelector('.popup__close');
 const formAddCard = popupAddCard.querySelector('.popup__form');
 const addCardButtonSave = popupAddCard.querySelector('.popup__submit');
-
 
 // Функция закрытия попапа при нажатии на темный фон
 const setOverlayListener = function (evt) {
@@ -49,25 +58,30 @@ initialCards.forEach(function (item) {
   renderCard(item.link, item.name);
 })
 
-function renderCard(link, name) {
-  const cardTemplate = new Card('#cardTemplate', name, link);
-
-  cardsContainer.prepend(cardTemplate.createCard());
+//Функция создания карточки
+function createCard(cardSelector, name, link) {
+  const cardTemplate = new Card(cardSelector, link, name);
+  const cardElement = cardTemplate.createCard();
+  return cardElement
 }
+
+function renderCard(link, name) {
+  // Создаем карточку на основе данных
+  const cardInstance = createCard('#cardTemplate', link, name);
+  // Помещаем ее в контейнер карточек
+  cardsContainer.prepend(cardInstance);
+}
+
+const validationAddForm = new FormValidator(config, formAddCard);
+const validationEditForm = new FormValidator(config, formEditProfile);
 
 // Добавление карточек из инпутов
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
   renderCard(inputAddCardLink.value, inputAddCardName.value);
-  const resetForm = new FormValidator(config, formAddCard);
-  resetForm.resetForm();
+  validationAddForm.resetForm();
   closePopup(popupAddCard);
   addCardButtonSave.disabled = true;
-}
-
-const enableValidation = (config, popup) => {
-  const formValidatorEditProfile = new FormValidator(config, popup);
-  formValidatorEditProfile.enableValidation();
 }
 
 function openEditPopup() {
@@ -75,7 +89,7 @@ function openEditPopup() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileText.textContent;
 
-  enableValidation(config, popupEditProfile);
+  validationEditForm.enableValidation();
 }
 
 // Изменение данных профиля
@@ -88,8 +102,7 @@ function handleProfileFormSubmit(evt) {
 
 function closeAddCardPopup() {
   closePopup(popupAddCard);
-  const resetForm = new FormValidator(config, formAddCard);
-  resetForm.resetForm();
+  validationAddForm.resetForm();
 }
 
 function openPopup(popup) {
@@ -113,13 +126,19 @@ popupClosedEditForm.addEventListener('click', () => {
   closePopup(popupEditProfile);
 });
 
+// Слушатель закрытия на крестик
+popupClosedImage.addEventListener('click', function () {
+  closePopup(popupImage);
+});
+
 // Слушатель кнопки открытия попапа для добавления карточки
 openAddCardButton.addEventListener('click', () => {
   openPopup(popupAddCard);
+  popupFormCard.reset();
   const inputList = formAddCard.querySelectorAll('.popup__input');
   inputList.forEach((input) => {
     input.addEventListener('keydown', () => {
-      enableValidation(config, popupAddCard);
+      validationAddForm.enableValidation();
     })
   })
 });
@@ -127,14 +146,5 @@ openAddCardButton.addEventListener('click', () => {
 closePopupAddButton.addEventListener('click', closeAddCardPopup);
 
 popupFormCard.addEventListener('submit', handleCardFormSubmit);
-
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-}
 
 export { openPopup, closePopup };

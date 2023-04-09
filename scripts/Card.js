@@ -1,16 +1,14 @@
-import { openPopup, closePopup } from './index.js';
+import { openPopup } from './index.js';
 
 const popupFigure = document.querySelector('.popup_type_image');
 const popupFigureImage = popupFigure.querySelector('.popup__image');
 const popupFigureCaption = popupFigure.querySelector('.popup__image-caption');
-const popupBigImage = document.querySelector('.popup_type_image')
-const closeImgButton = popupBigImage.querySelector('.popup__close');
 
 class Card {
     constructor(cardSelector, name, link) {
         this._cardSelector = cardSelector;
         this._name = name;
-        this._link = link
+        this._link = link;
     }
 
     _getTemplate() {
@@ -25,9 +23,6 @@ class Card {
         popupFigureImage.src = this._link;
         popupFigureCaption.textContent = this._name;
         popupFigureImage.alt = this._name;
-        closeImgButton.addEventListener('click', () => {
-            closePopup(popupFigure);
-        })
     }
 
     _deleteCard() {
