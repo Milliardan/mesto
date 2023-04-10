@@ -88,12 +88,7 @@ class FormValidator {
 
 // Валидация формы
   enableValidation = (config) => {
-      const { formSelector, ...rest} = this._config;
-      const formList = Array.from(document.querySelector(formSelector));
-
-      formList.forEach((formElement) => {
-          this._setEventListeners(formElement, rest);
-      })
+          this._setEventListeners(this._formName, this._config);
   }
 }
 

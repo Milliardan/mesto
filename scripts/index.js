@@ -73,7 +73,9 @@ function renderCard(link, name) {
 }
 
 const validationAddForm = new FormValidator(config, formAddCard);
+validationAddForm.enableValidation();
 const validationEditForm = new FormValidator(config, formEditProfile);
+validationEditForm.enableValidation();
 
 // Добавление карточек из инпутов
 function handleCardFormSubmit(evt) {
@@ -81,15 +83,12 @@ function handleCardFormSubmit(evt) {
   renderCard(inputAddCardLink.value, inputAddCardName.value);
   validationAddForm.resetForm();
   closePopup(popupAddCard);
-  addCardButtonSave.disabled = true;
 }
 
 function openEditPopup() {
   openPopup(popupEditProfile)
   nameInput.value = profileName.textContent;
   jobInput.value = profileText.textContent;
-
-  validationEditForm.enableValidation();
 }
 
 // Изменение данных профиля
@@ -135,12 +134,6 @@ popupClosedImage.addEventListener('click', function () {
 openAddCardButton.addEventListener('click', () => {
   openPopup(popupAddCard);
   popupFormCard.reset();
-  const inputList = formAddCard.querySelectorAll('.popup__input');
-  inputList.forEach((input) => {
-    input.addEventListener('keydown', () => {
-      validationAddForm.enableValidation();
-    })
-  })
 });
 
 closePopupAddButton.addEventListener('click', closeAddCardPopup);
