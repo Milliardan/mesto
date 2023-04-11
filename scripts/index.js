@@ -134,6 +134,7 @@ popupClosedImage.addEventListener('click', function () {
 openAddCardButton.addEventListener('click', () => {
   openPopup(popupAddCard);
   popupFormCard.reset();
+  validationAddForm.resetForm();
 });
 
 closePopupAddButton.addEventListener('click', closeAddCardPopup);
