@@ -3,21 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="pages/index.css">
   <title>Mesto</title>
-  <script defer src="scripts/initial-cards.js"></script>
-  <script defer type="module" src="scripts/index.js"></script>
 </head>
 <body class="body">
   <div class="page">
 
     <header class="header">
-      <img class="header__logo" src="images/logo.svg" alt="Логотип проекта Mesto">
+      <img class="header__logo" src="<%=require('../images/logo.svg')%>" alt="Логотип проекта Mesto">
     </header>
 
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="images/avatar.png" alt="Аватар пользователя">
+        <img class="profile__avatar" src="<%=require('../images/avatar.png')%>" alt="Аватар пользователя">
         <div class="profile__info">
           <div class="profile__wrap">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -43,7 +40,7 @@
 
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-        <button class="popup__close" type="button" aria-label="Закрыть"><img class="popup__close-icon" src="images/close-icon.svg" alt="Кнопка закрытия всплывающего окна"></button>
+        <button class="popup__close" type="button" aria-label="Закрыть"><img class="popup__close-icon" src="<%=require('../images/close-icon.svg')%>" alt="Кнопка закрытия всплывающего окна"></button>
         <form class="popup__form popup__form_action_edit" name="editPopupForm" novalidate>
           <label class="popup__field">
             <input type="text" name="name" class="popup__input popup__input_field_name" placeholder="Имя" minlength="2" maxlength="40" required>
@@ -63,15 +60,15 @@
 
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
-        <button class="popup__close" type="button" aria-label="Закрыть"><img class="popup__close-icon" src="images/close-icon.svg" alt="Кнопка закрытия всплывающего окна добавления карточки"></button>
+        <button class="popup__close" type="button" aria-label="Закрыть"><img class="popup__close-icon" src="<%=require('../images/close-icon.svg')%>" alt="Кнопка закрытия всплывающего окна добавления карточки"></button>
         <form class="popup__form popup__form_action_add" name="addPopupForm" novalidate>
           <label class="popup__field">
-            <input type="text" name="nameCard" class="popup__input popup__input_field_heading" placeholder="Название" value="" minlength="2" maxlength="30" required>
-            <span class="popup__error" id="nameCard-error"></span>
+            <input type="text" name="title" class="popup__input popup__input_field_heading" placeholder="Название" value="" minlength="2" maxlength="30" required>
+            <span class="popup__error" id="title-error"></span>
           </label>
           <label class="popup__field">
-            <input type="url" name="urlCard" class="popup__input popup__input_field_link" placeholder="Ссылка на картинку" value="" required>
-            <span class="popup__error" id="urlCard-error"></span>
+            <input type="url" name="link" class="popup__input popup__input_field_link" placeholder="Ссылка на картинку" value="" required>
+            <span class="popup__error" id="link-error"></span>
           </label>
         <button type="submit" class="popup__submit popup__submit_action_add popup__submit_disabled" aria-label="Создать">Создать</button>
       </form>
@@ -82,7 +79,7 @@
   <div class="popup popup_type_image">
     <figure class="popup__image-container">
       <img class="popup__image" src="#" alt="#">
-      <button class="popup__close" type="button" aria-label="Закрыть"><img class="popup__close-icon" src="images/close-icon.svg" alt="Кнопка закрытия всплывающего окна с картинкой"></button>
+      <button class="popup__close" type="button" aria-label="Закрыть"><img class="popup__close-icon" src="<%=require('../images/close-icon.svg')%>" alt="Кнопка закрытия всплывающего окна с картинкой"></button>
       <figcaption class="popup__image-caption">#</figcaption>
     </figure>
   </div>
