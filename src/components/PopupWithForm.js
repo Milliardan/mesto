@@ -6,6 +6,7 @@ class PopupWithForm extends Popup {
     this._submitCallback = submitCallback;
     this._formSubmit = this._popup.querySelector('.popup__form');
     this._inputList = Array.from(this._formSubmit.querySelectorAll('.popup__input'));
+    this._buttonSubmit = this._formSubmit.querySelector('.popup__submit');
   }
 
   /**Получить входные значения input */
@@ -17,17 +18,29 @@ class PopupWithForm extends Popup {
     return this._inputsValues;
   }
 
-  /**Метод наполнения формы input переданными данными*/
+  /**Функция наполнения формы input переданными данными*/
   setInputValues = (data) => {
     this._inputList.forEach((input, i) => {
       input.value = Object.values(data)[i];
     });
   }
 
-  /**Метод закрытия формы и ее очистки */
+  /**Функция закрытия формы и ее очистки */
   close() {
     this._formSubmit.reset();
     super.close();
+  }
+
+  /**Функция отображения Preloader */
+  renderPreloader(loading, displayText) {
+    console.log(this._buttonSubmit)
+    if (!this._buttonSubmit) return;
+    if (loading) {
+      this.defaulText = this._buttonSubmit.textContent;
+      this._buttonSubmit.textContent = displayText;
+    } else {
+      this._buttonSubmit.textContent = this.defaulText;
+    }
   }
 
   /**Слушатели */
@@ -36,7 +49,6 @@ class PopupWithForm extends Popup {
     this._formSubmit.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._submitCallback(this._getInputValues());
-      this.close();
     })
   }
 };

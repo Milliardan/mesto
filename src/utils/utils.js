@@ -34,10 +34,19 @@ const config = {
   errorClass: 'popup__error_visible'
 }
 
+/**Данные для обращения к серверу */
+const apiConfig = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-65',
+  headers:{
+    'Content-Type': "application/json",
+    authorization: '1d384fcf-35e6-4df7-b215-c6433e7c1bdc'
+  }
+}
+
 const esc = 'Escape';
 
 const nameInput = document.querySelector('.popup__input_field_name');
-const jobInput = document.querySelector('.popup__input_field_caption');
+const jobInput = document.querySelector('.popup__input_field_about');
 
 const profileName = document.querySelector('.profile__title');
 const profileText = document.querySelector('.profile__subtitle');
@@ -57,10 +66,12 @@ const popupAddCard = document.querySelector('.popup_type_add-card');
 const closePopupAddButton = popupAddCard.querySelector('.popup__close');
 const formAddCard = popupAddCard.querySelector('.popup__form');
 const addCardButtonSave = popupAddCard.querySelector('.popup__submit');
+const formEditAvatar = document.querySelector('.popup__form_type_avatar');
 
 export {
   initialCards,
   config,
+  apiConfig,
   esc,
   nameInput,
   jobInput,
@@ -79,5 +90,6 @@ export {
   popupAddCard,
   closePopupAddButton,
   formAddCard,
-  addCardButtonSave
+  addCardButtonSave,
+  formEditAvatar
 };
