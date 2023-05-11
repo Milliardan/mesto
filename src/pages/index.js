@@ -118,7 +118,6 @@ popupOpenEdit.addEventListener('click', () => {
 const  popupFormAddCards = new PopupWithForm('.popup_type_add-card', {
   submitCallback: (data) => {
     popupFormAddCards.renderPreloader(true, 'Сохранение...')
-    console.log(data)
     api.addNewCard(data)
     .then((newCard) => {
       cardList.prependItem(createCard(newCard, userCurrentId));

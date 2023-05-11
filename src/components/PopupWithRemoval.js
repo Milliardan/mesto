@@ -7,11 +7,9 @@ class PopupWithRemoval extends Popup {
     this._buttonSubmit = this._popup.querySelector('.popup__submit');
   }
 
-  /**Функция открытия Popup и получения данных о карточке */
-  open(cardElement, idCard) {
+  /**Функция открытия Popup */
+  open() {
     super.open();
-    this.id = idCard;
-    this.card = cardElement;
   }
 
   /**Функция отображения Preloader */
@@ -29,7 +27,7 @@ class PopupWithRemoval extends Popup {
   setEventListeners() {
     super.setEventListeners();
     this._buttonSubmit.addEventListener('click', () => {
-      this._submitCallback(this.id, this.card);
+      this._submitCallback();
     })
   }
 }

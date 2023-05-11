@@ -33,7 +33,6 @@ class PopupWithForm extends Popup {
 
   /**Функция отображения Preloader */
   renderPreloader(loading, displayText) {
-    console.log(this._buttonSubmit)
     if (!this._buttonSubmit) return;
     if (loading) {
       this.defaulText = this._buttonSubmit.textContent;

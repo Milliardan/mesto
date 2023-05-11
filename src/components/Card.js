@@ -51,13 +51,13 @@ class Card {
   };
 
   /** Функция проверки наличия лайка на карточке */
-  likedCard() {
+  checkCard() {
     return this._dataLikes.some(like => like._id === this._userId)
   };
 
   /**Функция изменения установки и снятия лайка */
   togleLike() {
-    if (this.likedCard()) {
+    if (this.checkCard()) {
       this._removeLike(this.idCard);
     } else {
       this._putLike(this.idCard);
@@ -67,12 +67,8 @@ class Card {
   /**Функция общего отображения лайков и их колличества  */
   renderCardLike(card) {
       this._dataLikes = card.likes;
-    if(this._dataLikes.length === 0) {
-      this._cardElementLikesCount.textContent = '0';
-    } else {
       this._cardElementLikesCount.textContent = this._dataLikes.length
-    }
-    if (this.likedCard()) {
+    if (this.checkCard()) {
       this._cardElementLike.classList.add('elements__like_active');
     } else {
       this._cardElementLike.classList.remove('elements__like_active');
