@@ -3,12 +3,13 @@ import Popup from "./Popup.js";
 class PopupWithRemoval extends Popup {
   constructor(selectorPopup, { submitCallback }) {
     super(selectorPopup);
-    this._submitCallback = submitCallback;
     this._buttonSubmit = this._popup.querySelector('.popup__submit');
+    this._submitCallback = submitCallback;
   }
 
   /**Функция открытия Popup */
-  open() {
+  open(submitCallback) {
+    this._submitCallback = submitCallback;
     super.open();
   }
 
